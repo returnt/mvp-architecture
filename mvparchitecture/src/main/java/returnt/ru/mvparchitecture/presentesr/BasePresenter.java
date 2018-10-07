@@ -11,6 +11,7 @@ package returnt.ru.mvparchitecture.presentesr;
 import android.util.Log;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
+import returnt.ru.mvparchitecture.callback.CallbackApply;
 import returnt.ru.mvparchitecture.contracts.IBasePresenter;
 import returnt.ru.mvparchitecture.contracts.IBaseView;
 
@@ -83,5 +84,12 @@ public abstract class BasePresenter<T extends IBaseView> implements IBasePresent
     @Override
     public void logOnError(Throwable e) {
         Log.e(TAG, ON_ERROR, e);
+    }
+
+    @Override
+    public void sendToView(CallbackApply<T> callbackApply) {
+        if (callbackApply != null && mView != null) {
+            callbackApply.apply(mView);
+        }
     }
 }

@@ -9,6 +9,7 @@
 package returnt.ru.mvparchitecture.contracts;
 
 import io.reactivex.disposables.Disposable;
+import returnt.ru.mvparchitecture.callback.CallbackApply;
 
 /**
  * Class IBasePresenter
@@ -48,5 +49,7 @@ public interface IBasePresenter<T extends IBaseView> {
     <D extends Disposable> D addToCompositeDisposableAadGet(D subscriber);
 
     void logOnError(Throwable e);
+
+    void sendToView(CallbackApply<T> callbackApply);
 
 }
