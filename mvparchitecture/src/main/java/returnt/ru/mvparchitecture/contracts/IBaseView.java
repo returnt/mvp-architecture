@@ -17,7 +17,9 @@ package returnt.ru.mvparchitecture.contracts;
  */
 public interface IBaseView {
 
-    void showProgressDialog();
+    default void showProgressDialog() {
+    }
 
-    void hideProgressDialog();
+    default void hideProgressDialog() {
+    }
 }
